@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
                 // 특정 어노테이션이 붙어있는 클래스 파일들을 new해서 loc 스프링 컨테이너에 관리해준다.
 public class
 BlogControllerTest {
-
     @GetMapping("/test/hello")
     public String hello(){
         return "<h1>Hello spring boot</h1>";
