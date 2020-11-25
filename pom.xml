@@ -21,10 +21,10 @@
 	<dependencies>
 		<!-- 추가 라이브러리 시작 -->
 		<!-- 시큐리티 태그 라이브러리 -->
-		<!--<dependency>
+		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
-		</dependency>-->
+		</dependency>
 
 		<!-- JSP 템플릿 엔진을 설정해줘야 jsp파일이 동작 가능 -->
 		<!-- src/main/resources/static 이하에는 브라우져가 읽을 수 있는 파일만 둘 수 있다-->
@@ -44,10 +44,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-	<!--	<dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>-->
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>

@@ -69,7 +69,7 @@ public class DummyControllerTest {
         User user = userRepository.findById(id).orElseThrow(new Supplier<IllegalArgumentException>() {
             @Override
             public IllegalArgumentException get() {
-                return new IllegalArgumentException("Cannot find the user. ID: " + id);
+                return new IllegalArgumentException("Cannot find the user.");
             }
         });
         //RestController는 data를 return하는데 객체는 Browser가 이해못한다
@@ -92,3 +92,5 @@ public class DummyControllerTest {
         return "Registration success";
     }
 }
+//key=value 형태가 아닌 json data 같은 일반 text데이터는 스프링 컨트롤러가 받기 위해서는 @RequestBody annotation을 사용해야한다.
+//@RequestBody를 붙이면 MessageConverter class를 구현한 jackson library가 발동하면서 json data를 java object로 parsing하여 받아준다.

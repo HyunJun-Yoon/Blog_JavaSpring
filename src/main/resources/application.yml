@@ -27,7 +27,7 @@ spring:
 server:
   port: 8085
   servlet:
-    context-path: /blog
+    context-path: /
     encoding:
       charset: UTF-8
       enabled: true
