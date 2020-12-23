@@ -24,7 +24,7 @@ let index = {
             url: "/auth/joinProc",
             data: JSON.stringify(data), //http body data
             contentType: "application/json; charset=utf-8",
-            dataType: "json" //response default data type is string, but it converts into javascript object
+            dataType: "json" // default data type of response is string, but it converts into javascript object
         }).done(function(res){
             alert("Registration Success");
             location.href = "/";
@@ -58,7 +58,10 @@ let index = {
 index.init();
 /*
  *ajax를 사용하는 이유
+ *
  * 1. 요청에 대한 응답을 html이 아닌 Data(json)를 받기 위하여
  * 2. asynchronous 를 위해서
+ * 앱과 브라우저에서 각각 응답에 대한 요청을 데이터(앱에서는 자바로 이미 구현되어 있다)와 html을 해주게 되는데 이렇게 되면 2개의 다른 서버가 필요하다.
+ * 하나의 서버로 데이터를 리턴해주는 방식으로 구현을 하면 되는데 여기서 브라우저는 정상적인 데이터를 받은 후 다시 request를 통해 html을 응답 받는다.
 
  */

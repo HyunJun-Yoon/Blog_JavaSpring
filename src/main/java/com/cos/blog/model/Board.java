@@ -28,7 +28,6 @@ public class Board {
     @Lob // 대용량 데이터
     private String content; //summernote library를 디자인을 위해 사용할건데 <html>tag가 들어가 용량이 늘어난다.
 
-    @ColumnDefault("0")
     private int count; //조회수
 
     @ManyToOne(fetch = FetchType.EAGER) //Many = board, User = One
