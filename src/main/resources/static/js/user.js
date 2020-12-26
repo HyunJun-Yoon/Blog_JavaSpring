@@ -3,6 +3,10 @@ let index = {
         $("#btn-save").on("click", ()=>{ //use arrow function to bind 'this'
             this.save();
         });
+        $("#btn-update").on("click", ()=>{ //use arrow function to bind 'this'
+            this.update();
+        });
+
         // $("#btn-login").on("click", ()=>{ //use arrow function to bind 'this'
         //     this.login();
         // });
@@ -27,6 +31,28 @@ let index = {
             dataType: "json" // default data type of response is string, but it converts into javascript object
         }).done(function(res){
             alert("Registration Success");
+            location.href = "/";
+        }).fail(function(error){
+            alert(JSON.stringify(error));
+        }); //ajax통신을 통해 데이터를 json으로 변경하여 insert 요청
+    },
+
+    update: function () {
+        let data = {
+            id: $("#id").val(),
+            username: $("#username").val(),
+            password: $("#password").val(),
+            email: $("#email").val()
+        };
+
+        $.ajax({
+            type: "PUT",
+            url: "/user",
+            data: JSON.stringify(data), //http body data
+            contentType: "application/json; charset=utf-8",
+            dataType: "json"
+        }).done(function(res){
+            alert("User Information is updated");
             location.href = "/";
         }).fail(function(error){
             alert(JSON.stringify(error));
