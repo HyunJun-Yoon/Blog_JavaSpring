@@ -14,6 +14,7 @@
             <input type="password"  name="password" class="form-control" placeholder="Enter password" id="password">
         </div>
         <button id="btn-login" class="btn btn-primary">Login</button>
+        <a href="https://kauth.kakao.com/oauth/authorize?client_id=892cfeff253634b6e65a2c4bb90ea1f4&redirect_uri=http://localhost:8085/auth/kakao/callback&response_type=code"><img height="39" src="/image/kakao_login_medium_narrow.png"/></a>
     </form>
 
 </div>

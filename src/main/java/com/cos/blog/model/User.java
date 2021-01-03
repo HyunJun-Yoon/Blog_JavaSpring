@@ -24,7 +24,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY) //프로젝트에서 연결된 DB의 넘버링 전략을 따라간다.
     private int id;
 
-    @Column(nullable = false, length = 20, unique=true)
+    @Column(nullable = false, length = 70, unique=true)
     private String username;
 
     @Column(nullable = false, length = 100) //for hashing
@@ -37,6 +37,8 @@ public class User {
     //DB는 Role이란 타입이 없어서 annotation을 달아준다.
     @Enumerated(EnumType.STRING)
     private Role role; //enum을 쓰는 게 좋다. //ADMIN USER
+
+    private String oauth; //kakao google
 
     @CreationTimestamp // 시간 자동 입력
     private Timestamp createDate;

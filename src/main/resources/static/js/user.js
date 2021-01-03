@@ -30,8 +30,12 @@ let index = {
             contentType: "application/json; charset=utf-8",
             dataType: "json" // default data type of response is string, but it converts into javascript object
         }).done(function(res){
-            alert("Registration Success");
-            location.href = "/";
+            if (res.status === 500){
+                alert("Registration Failed")
+            }else{
+                alert("Registration Success");
+                location.href = "/";
+            }
         }).fail(function(error){
             alert(JSON.stringify(error));
         }); //ajax통신을 통해 데이터를 json으로 변경하여 insert 요청

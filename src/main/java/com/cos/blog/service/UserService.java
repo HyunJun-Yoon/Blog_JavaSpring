@@ -19,6 +19,15 @@ public class UserService {
     @Autowired
     private BCryptPasswordEncoder encoder;
 
+    @Transactional(readOnly = true)
+    public User existenceChecking(String username){
+        User user = userRepository.findByUsername(username).orElseGet(()->{
+            return new User();
+        });
+
+        return user;
+    }
+
 
     @Transactional
     public void register(User user){
@@ -37,10 +46,14 @@ public class UserService {
         User persistence = userRepository.findById(user.getId()).orElseThrow(()->{
             return new IllegalArgumentException("Cannot find the user");
         });
-        String rawPassword = user.getPassword();
-        String encPassword = encoder.encode(rawPassword);
-        persistence.setPassword(encPassword);
-        persistence.setEmail(user.getEmail());
+
+        //Validate check
+        if(persistence.getOauth() == null || persistence.getOauth().equals("")) {
+            String rawPassword = user.getPassword();
+            String encPassword = encoder.encode(rawPassword);
+            persistence.setPassword(encPassword);
+            persistence.setEmail(user.getEmail());
+        }
         //회원 수정 함수 종료 시 = 서비스 종료 시 = Transaction 종료 = commit이 자동으로 됨
         //영속화된 persistence 객체의 변화가 감지되면 (dirty checking) update를 해준다.
 

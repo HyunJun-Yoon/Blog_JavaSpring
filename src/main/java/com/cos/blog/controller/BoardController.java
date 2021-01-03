@@ -27,6 +27,7 @@ public class BoardController {
     @GetMapping("board/{id}")
     public String findByid(@PathVariable int id, Model model){
         model.addAttribute("board",boardService.detail(id));
+
         return "board/detail";
 
     }

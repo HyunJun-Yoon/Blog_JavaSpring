@@ -1,5 +1,6 @@
 package com.cos.blog.model;
 
+import com.cos.blog.dto.CommentSaveRequestDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,7 +15,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Reply {
+public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //프로젝트에서 연결된 DB의 넘버링 전략을 따라간다.
     private int id;
@@ -32,4 +33,21 @@ public class Reply {
 
     @CreationTimestamp
     private Timestamp createDate;
+
+    public void update(User user, Board board, String content) {
+        setUser(user);
+        setBoard(board);
+        setContent(content);
+    }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "id=" + id +
+                ", content='" + content + '\'' +
+                ", board=" + board +
+                ", user=" + user +
+                ", createDate=" + createDate +
+                '}';
+    }
 }
