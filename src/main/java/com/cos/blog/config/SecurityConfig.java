@@ -1,6 +1,8 @@
 package com.cos.blog.config;
 
-import com.cos.blog.config.auth.PrincipalDetail;
+
+import com.cos.blog.config.auth.CustomOAuth2UserService;
+import com.cos.blog.config.auth.OAuth2LoginSuccessHandler;
 import com.cos.blog.config.auth.PrincipalDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -20,6 +22,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private PrincipalDetailService principalDetailService;
+
+    @Autowired
+    private CustomOAuth2UserService customOAuth2UserService;
+
+    @Autowired
+    private OAuth2LoginSuccessHandler oAuth2LoginSuccessHandler;
 
     @Bean
     @Override
@@ -45,6 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .csrf().disable()
             .authorizeRequests()
+                .antMatchers("/oauth2/**").permitAll()
                 .antMatchers("/", "/auth/**", "/js/**", "/css/**", "/image/**")
                 .permitAll()
                 .anyRequest()
@@ -53,7 +62,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/auth/loginForm")
                 .loginProcessingUrl("/auth/loginProc") //Spring Security take a login request.
-                .defaultSuccessUrl("/");
+                .defaultSuccessUrl("/")
+            .and()
+            .oauth2Login()
+                .loginPage("/auth/loginForm")
+                .userInfoEndpoint().userService(customOAuth2UserService)
+                .and()
+                .successHandler(oAuth2LoginSuccessHandler);
 
     }
+
+
 }

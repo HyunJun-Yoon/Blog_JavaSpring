@@ -38,7 +38,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role; //enum을 쓰는 게 좋다. //ADMIN USER
 
-    private String oauth; //kakao google
+    private String oauth; //kakao, google..
 
     @CreationTimestamp // 시간 자동 입력
     private Timestamp createDate;

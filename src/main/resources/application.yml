@@ -24,6 +24,17 @@ spring:
     jackson:
       serialization:
         fail-on-empty-beans: false
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 9602163921-h04vq1kpcmifmur3nftcdfja4eu90evb.apps.googleusercontent.com
+            client-secret: cae3iuBIaSsGt7ItldMR9R3-
+            scope:
+              - email
+              - profile
 server:
   port: 8085
   servlet:
@@ -35,3 +46,4 @@ server:
 
 cos:
   key: cos1234
+
